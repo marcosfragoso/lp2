@@ -1,3 +1,5 @@
+package cronicas;
+
 public class CronicasDoEstudanteSistema {
 
     private Cronica[] cronicas = new Cronica[1000];
@@ -29,7 +31,7 @@ public class CronicasDoEstudanteSistema {
         int contador = 1;
         for (Cronica cronica : cronicas) {
             if (cronica != null) {
-                retorno += "\n\nCronica #" + contador;
+                retorno += "\n\ncronicas.Cronica #" + contador;
                 retorno += cronica.toString();
                 contador ++;
             }
@@ -54,10 +56,9 @@ public class CronicasDoEstudanteSistema {
         return cronicaMaior.getTitulo() + " - lida " + cronicaMaior.getQntdLeituras() + " vezes";
     }
 
-    public String criarLivreto(int[] cronicas) {
+    public boolean criarLivreto(int[] cronicas) {
         if (cronicas.length > 5 || cronicas.length < 3) {
-            System.out.println("Erro ao criar Livreto!");
-            return "Erro ao criar Livreto!";
+            throw new IllegalArgumentException("Livretos só entre 3 a 5 crônicas.");
         }
         Livreto livreto = new Livreto(cronicas.length);
         for (int i = 0; i < cronicas.length; i++){
@@ -68,7 +69,7 @@ public class CronicasDoEstudanteSistema {
         }
         this.livretos[posLivreto] = livreto;
         this.posLivreto++;
-        return "";
+        return true;
     }
 
     public String lerLivreto(int i) {

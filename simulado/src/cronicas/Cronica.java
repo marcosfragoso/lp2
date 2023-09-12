@@ -1,3 +1,7 @@
+package cronicas;
+
+import java.util.Objects;
+
 public class Cronica {
     private String titulo;
     private String texto;
@@ -40,5 +44,17 @@ public class Cronica {
         String retorno = "\n" + this.titulo + "\nData: " + this.dataCriacao +
                 "\nAutor: " + autor + "\n" + texto;
         return retorno;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cronica cronica)) return false;
+        return titulo.equals(cronica.titulo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(titulo);
     }
 }
